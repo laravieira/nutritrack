@@ -11,33 +11,32 @@ export default function TabLayout() {
 
   return (
     <Tabs style={styles.container}>
-        <Header />
+      <Header />
 
-        <TabList style={styles.tabBar}>
-          <TabTrigger name="TODAY" href="/(tabs)">
-            <ThemedText>TODAY</ThemedText>
-          </TabTrigger>
-          <TabTrigger name="HISTORY" href="/(tabs)/history">
-            <ThemedText>HISTORY</ThemedText>
-          </TabTrigger>
-          <TabTrigger name="FOODS" href="/(tabs)/foods">
-            <ThemedText>FOODS</ThemedText>
-          </TabTrigger>
-          <TabTrigger name="SETTINGS" href="/(tabs)/settings">
-            <ThemedText>SETTINGS</ThemedText>
-          </TabTrigger>
-        </TabList>
+      <TabList style={styles.tabBar}>
+        <TabTrigger name="TODAY" href="/(tabs)">
+          <ThemedText>TODAY</ThemedText>
+        </TabTrigger>
+        <TabTrigger name="HISTORY" href="/(tabs)/history">
+          <ThemedText>HISTORY</ThemedText>
+        </TabTrigger>
+        <TabTrigger name="FOODS" href="/(tabs)/foods">
+          <ThemedText>FOODS</ThemedText>
+        </TabTrigger>
+        <TabTrigger name="SETTINGS" href="/(tabs)/settings">
+          <ThemedText>SETTINGS</ThemedText>
+        </TabTrigger>
+      </TabList>
 
-        <View style={styles.content}>
-          <TabSlot />
-        </View>
+      <View style={styles.content}>
+        <TabSlot />
+      </View>
     </Tabs>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { height: 60, justifyContent: 'center', alignItems: 'center', backgroundColor: '#eee' },
   tabBar: { flexDirection: 'row', justifyContent: 'space-around', padding: 10, borderBottomWidth: 1 },
   content: { flex: 1 },
   fab: {
