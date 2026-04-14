@@ -3,47 +3,27 @@ import { StyleSheet, View, VirtualizedList } from 'react-native'
 import { ThemedText } from '@/components/themed-text'
 import MealItem from '@/components/meal-item'
 import MealAddItem from '@/components/meal-add'
-import { useState } from 'react'
 import Button from '@/components/ui/buttom'
-
-type ItemData = {
-  id: number
-  name: string
-  description: string
-  calories: number
-};
-
-const getItem = (_data: unknown, index: number): ItemData => index % 2 === 0 ? ({
-  id: index,
-  name: 'Oatmeal with berries',
-  description: `2% Milk
-Almonds`,
-  calories: 380
-}) : ({
-  id: index,
-  name: 'Grilled Chicken Salad',
-  description: `Whole What Bread
-Olive Oil Dressing`,
-  calories: 450
-});
+import Food from '@/api/food'
+import { endOfDay, startOfDay } from 'date-fns'
 
 export default function TabTodayScreen() {
-  const [amount, setAmount] = useState(3)
+  const meals = Food.getMeals({ start: startOfDay(new Date()), end: endOfDay(new Date()) })
 
   return (
     <View style={styles.container}>
       <VirtualizedList
         contentContainerStyle={styles.content}
         ListHeaderComponent={<ThemedText type="title">MEALS</ThemedText>}
-        ListFooterComponent={<MealAddItem onPress={() => setAmount(amount + 1)} style={{ marginBottom: 90 }} />}
-        ListEmptyComponent={<MealAddItem onPress={() => setAmount(amount + 1)} />}
+        ListFooterComponent={<MealAddItem onPress={() => null} style={{ marginBottom: 90 }} />}
+        ListEmptyComponent={<MealAddItem onPress={() => null} />}
         initialNumToRender={4}
-        renderItem={({item}) => <MealItem name={item.name} description={item.description} calories={item.calories} />}
+        renderItem={({item}: {item: Food}) => <MealItem name={item.name} description={item.description} calories={item.calories} />}
         keyExtractor={item => item.id.toString()}
-        getItemCount={() => amount}
-        getItem={getItem}/>
+        getItemCount={() => meals.length}
+        getItem={(_, index) => meals.at(index) as Food}/>
       <View style={styles.floatingButton}>
-        <Button onPress={() => setAmount(amount + 1)}>LOG FOOD</Button>
+        <Button onPress={() => null}>LOG FOOD</Button>
       </View>
     </View>
   );

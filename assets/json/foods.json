@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Oatmeal with berries",
+    "description": "2% Milk\nAlmonds",
+    "kilo_calories_per_gram": 3,
+    "protein_per_gram": 0.12,
+    "carbohydrates_per_gram": 0.27,
+    "fats_per_gram": 0.05
+  },
+  {
+    "id": 2,
+    "name": "Grilled Chicken Salad",
+    "description": "Whole Wheat Bread\nOlive Oil Dressing",
+    "kilo_calories_per_gram": 2,
+    "protein_per_gram": 0.2,
+    "carbohydrates_per_gram": 0.3,
+    "fats_per_gram": 0.1
+  },
+  {
+    "id": 3,
+    "name": "Baked Salmon with Quinoa",
+    "description": "Lemon juice\nAsparagus",
+    "kilo_calories_per_gram": 2,
+    "protein_per_gram": 0.3,
+    "carbohydrates_per_gram": 0.4,
+    "fats_per_gram": 0.2
+  },
+  {
+    "id": 4,
+    "name": "Greek Yogurt Parfait",
+    "description": "Granola\nHoney\nMixed Berries",
+    "kilo_calories_per_gram": 1,
+    "protein_per_gram": 0.1,
+    "carbohydrates_per_gram": 0.2,
+    "fats_per_gram": 0.1
+  },
+  {
+    "id": 5,
+    "name": "Beef Stir-Fry",
+    "description": "Broccoli\nSoy Sauce\nBrown Rice",
+    "kilo_calories_per_gram": 3,
+    "protein_per_gram": 0.3,
+    "carbohydrates_per_gram": 0.7,
+    "fats_per_gram": 0.2
+  },
+  {
+    "id": 6,
+    "name": "Avocado Toast",
+    "description": "Sourdough Bread\nPoached Egg\nRed Pepper Flakes",
+    "kilo_calories_per_gram": 2,
+    "protein_per_gram": 0.2,
+    "carbohydrates_per_gram": 0.3,
+    "fats_per_gram": 0.1
+  },
+  {
+    "id": 7,
+    "name": "Lentil Soup",
+    "description": "Carrots\nCelery\nSpinach",
+    "kilo_calories_per_gram": 1,
+    "protein_per_gram": 0.1,
+    "carbohydrates_per_gram": 0.6,
+    "fats_per_gram": 0.1
+  },
+  {
+    "id": 8,
+    "name": "Turkey and Swiss Wrap",
+    "description": "Spinach Tortilla\nMustard\nLettuce",
+    "kilo_calories_per_gram": 2,
+    "protein_per_gram": 0.2,
+    "carbohydrates_per_gram": 0.4,
+    "fats_per_gram": 0.1
+  },
+  {
+    "id": 9,
+    "name": "Spaghetti Squash Marinara",
+    "description": "Parmesan Cheese\nFresh Basil\nGarlic",
+    "kilo_calories_per_gram": 1,
+    "protein_per_gram": 0.1,
+    "carbohydrates_per_gram": 0.3,
+    "fats_per_gram": 0.1
+  },
+  {
+    "id": 10,
+    "name": "Shrimp Tacos",
+    "description": "Corn Tortillas\nCabbage Slaw\nLime",
+    "kilo_calories_per_gram": 2,
+    "protein_per_gram": 0.3,
+    "carbohydrates_per_gram": 0.6,
+    "fats_per_gram": 0.2
+  }
+]
