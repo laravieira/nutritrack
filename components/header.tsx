@@ -1,4 +1,3 @@
-import { useColorScheme } from '@/hooks/use-color-scheme'
 import { StyleSheet, Text, View } from 'react-native'
 import { Image } from 'expo-image'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -8,8 +7,6 @@ import { ThemedText } from '@/components/themed-text'
 import LinearProgress from '@/components/ui/linear-progress'
 
 export default function Header() {
-  const colorScheme = useColorScheme();
-
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>

@@ -1,8 +1,6 @@
 import { Pressable, PressableProps, StyleSheet, Text } from 'react-native'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { Colors } from '@/constants/theme'
-// @ts-ignore
-import { flattenStyle } from 'react-native/Libraries/ReactPrivate/ReactNativePrivateInterface'
 import { ReactNode } from 'react'
 
 export default function Button({ style, children, ...props}: PressableProps) {
@@ -10,7 +8,10 @@ export default function Button({ style, children, ...props}: PressableProps) {
   const styles = useStyles(colorScheme ?? 'light')
 
   return (
-    <Pressable {...props} style={[styles.container, flattenStyle(style)]}>
+    <Pressable {...props} style={(state) => [
+      styles.container,
+      typeof style === 'function' ? style(state) : style
+    ]}>
       <Text style={styles.text}>{children as ReactNode}</Text>
     </Pressable>
   )

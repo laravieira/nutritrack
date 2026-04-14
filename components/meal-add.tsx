@@ -2,15 +2,16 @@ import { Pressable, PressableProps, StyleSheet, Text } from 'react-native'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { Colors } from '@/constants/theme'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-// @ts-ignore
-import { flattenStyle } from 'react-native/Libraries/ReactPrivate/ReactNativePrivateInterface'
 
 export default function MealAddItem({ style, ...props}: PressableProps) {
   const colorScheme = useColorScheme()
   const styles = useStyles(colorScheme ?? 'light')
 
   return (
-    <Pressable {...props} style={[styles.container, flattenStyle(style)]}>
+    <Pressable {...props} style={(state) => [
+      styles.container,
+      typeof style === 'function' ? style(state) : style
+    ]}>
       <MaterialIcons name="add-circle" size={40} style={styles.icon}/>
       <Text style={styles.text}>Add Meal</Text>
     </Pressable>
