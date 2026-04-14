@@ -11,7 +11,6 @@ export default function Header() {
   const colorScheme = useColorScheme();
 
   return (
-
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.header}>

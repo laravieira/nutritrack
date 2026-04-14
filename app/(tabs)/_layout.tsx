@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native'
 import Header from '@/components/header'
 import { Tabs, TabList, TabSlot, TabTrigger } from 'expo-router/ui'
 import { ThemedText } from '@/components/themed-text'
+import TabButton from '@/components/ui/tab-button'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -15,16 +16,16 @@ export default function TabLayout() {
 
       <TabList style={styles.tabBar}>
         <TabTrigger name="TODAY" href="/(tabs)">
-          <ThemedText>TODAY</ThemedText>
+          <TabButton name="TODAY" href="/(tabs)" />
         </TabTrigger>
         <TabTrigger name="HISTORY" href="/(tabs)/history">
-          <ThemedText>HISTORY</ThemedText>
+          <TabButton name="HISTORY" href="/(tabs)/history" />
         </TabTrigger>
         <TabTrigger name="FOODS" href="/(tabs)/foods">
-          <ThemedText>FOODS</ThemedText>
+          <TabButton name="FOODS" href="/(tabs)/foods" />
         </TabTrigger>
         <TabTrigger name="SETTINGS" href="/(tabs)/settings">
-          <ThemedText>SETTINGS</ThemedText>
+          <TabButton name="SETTINGS" href="/(tabs)/settings" />
         </TabTrigger>
       </TabList>
 
@@ -36,9 +37,18 @@ export default function TabLayout() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  tabBar: { flexDirection: 'row', justifyContent: 'space-around', padding: 10, borderBottomWidth: 1 },
-  content: { flex: 1 },
+  container: {
+    flex: 1
+  },
+  tabBar: {
+    flex: 1,
+    flexGrow: 0,
+    height: 54,
+    paddingHorizontal: 16,
+  },
+  content: {
+    flex: 1
+  },
   fab: {
     position: 'absolute',
     right: 20,
