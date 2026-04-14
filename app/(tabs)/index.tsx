@@ -1,109 +1,71 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet, View, VirtualizedList } from 'react-native'
 
-import { Collapsible } from '@/components/ui/collapsible';
-import { ExternalLink } from '@/components/external-link';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Fonts } from '@/constants/theme';
+import { ThemedText } from '@/components/themed-text'
+import MealItem from '@/components/meal-item'
+import MealAddItem from '@/components/meal-add'
+import { useState } from 'react'
+import Button from '@/components/ui/buttom'
 
-export default function TabTwoScreen() {
+type ItemData = {
+  id: number
+  name: string
+  description: string
+  calories: number
+};
+
+const getItem = (_data: unknown, index: number): ItemData => index % 2 === 0 ? ({
+  id: index,
+  name: 'Oatmeal with berries',
+  description: `2% Milk
+Almonds`,
+  calories: 380
+}) : ({
+  id: index,
+  name: 'Grilled Chicken Salad',
+  description: `Whole What Bread
+Olive Oil Dressing`,
+  calories: 450
+});
+
+export default function TabTodayScreen() {
+  const [amount, setAmount] = useState(3)
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/icon.svg')}
-          style={{ width: 100, height: 100, alignSelf: 'center' }}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText
-          type="title"
-          style={{
-            fontFamily: Fonts.rounded,
-          }}>
-          Explore
-        </ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image
-          source={require('@/assets/images/react-logo.png')}
-          style={{ width: 100, height: 100, alignSelf: 'center' }}
-        />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful{' '}
-          <ThemedText type="defaultSemiBold" style={{ fontFamily: Fonts.mono }}>
-            react-native-reanimated
-          </ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <VirtualizedList
+        contentContainerStyle={styles.content}
+        ListHeaderComponent={<ThemedText type="title">MEALS</ThemedText>}
+        ListFooterComponent={<MealAddItem onPress={() => setAmount(amount + 1)} style={{ marginBottom: 90 }} />}
+        ListEmptyComponent={<MealAddItem onPress={() => setAmount(amount + 1)} />}
+        initialNumToRender={4}
+        renderItem={({item}) => <MealItem name={item.name} description={item.description} calories={item.calories} />}
+        keyExtractor={item => item.id.toString()}
+        getItemCount={() => amount}
+        getItem={getItem}/>
+      <View style={styles.floatingButton}>
+        <Button onPress={() => setAmount(amount + 1)}>LOG FOOD</Button>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
+  container: {
+    flex: 1,
+    width: '100%',
+  },
+  content: {
+    padding: 16,
+    gap: 16,
+  },
+  floatingButton: {
     position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
+    width: '100%',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 32,
+    left: 0,
+    right: 0,
+  }
 });

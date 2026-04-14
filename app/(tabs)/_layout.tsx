@@ -4,11 +4,12 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { StyleSheet, View } from 'react-native'
 import Header from '@/components/header'
 import { Tabs, TabList, TabSlot, TabTrigger } from 'expo-router/ui'
-import { ThemedText } from '@/components/themed-text'
 import TabButton from '@/components/ui/tab-button'
+import { Colors } from '@/constants/theme'
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme()
+  const styles = useStyles(colorScheme ?? 'light')
 
   return (
     <Tabs style={styles.container}>
@@ -36,15 +37,16 @@ export default function TabLayout() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = (mode: 'dark' | 'light') => StyleSheet.create({
   container: {
     flex: 1
   },
   tabBar: {
-    flex: 1,
     flexGrow: 0,
     height: 54,
     paddingHorizontal: 16,
+    backgroundColor: Colors[mode].background,
+    elevation: 5
   },
   content: {
     flex: 1
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#007AFF',
+    backgroundColor: Colors[mode].tint,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5,

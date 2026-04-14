@@ -1,9 +1,12 @@
 import { useTabTrigger } from 'expo-router/ui'
-import { ThemedText } from '@/components/themed-text'
 import { TabTriggerProps } from 'expo-router/build/ui/TabTrigger'
 import { Pressable, StyleSheet, Text } from 'react-native'
+import { Colors } from '@/constants/theme'
+import { useColorScheme } from '@/hooks/use-color-scheme'
 
 export default function TabButton(props: TabTriggerProps) {
+  const colorScheme = useColorScheme()
+  const styles = useStyles(colorScheme ?? 'light')
   const { triggerProps: { isFocused, onPress, onLongPress } } = useTabTrigger(props)
 
   return (
@@ -14,24 +17,24 @@ export default function TabButton(props: TabTriggerProps) {
 
 }
 
-const styles = StyleSheet.create({
+const useStyles = (mode: 'dark' | 'light') => StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 12,
     paddingVertical: 12,
   },
   focused: {
     borderBottomWidth: 3,
-    borderBottomColor: '#43b96d',
+    borderBottomColor: Colors[mode].tint,
     paddingBottom: 9,
   },
   text: {
-    color: '#cacaca',
+    color: Colors[mode].text,
     fontSize: 16,
     fontWeight: 'bold',
   },
   focusedText: {
-    color: '#43b96d',
+    color: Colors[mode].tint,
   }
 })
