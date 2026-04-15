@@ -13,7 +13,7 @@ export default function TabTodayScreen() {
       <VirtualizedList
         contentContainerStyle={styles.content}
         ListHeaderComponent={<ThemedText type="title">FOODS</ThemedText>}
-        ListFooterComponent={<MealAddItem onPress={() => null} style={{ marginBottom: 90 }} />}
+        ListFooterComponent={<View style={{ marginBottom: 90 }} />}
         ListEmptyComponent={<MealAddItem onPress={() => null} />}
         initialNumToRender={4}
         renderItem={({item}: {item: Food}) => <FoodItem food={item} />}

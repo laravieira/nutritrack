@@ -42,63 +42,66 @@
       [
         "expo-font",
         {
-          "fonts": [{
-            "fontFamily": "Roboto",
-            "fontDefinitions": [
-              {
-                "path": "./assets/fonts/Roboto-Regular.ttf",
-                "weight": 400,
-                "style": "normal"
-              },
-              {
-                "path": "./assets/fonts/Roboto-Italic.ttf",
-                "weight": 400,
-                "style": "italic"
-              },
-              {
-                "path": "./assets/fonts/Roboto-Medium.ttf",
-                "weight": 500,
-                "style": "normal"
-              },
-              {
-                "path": "./assets/fonts/Roboto-MediumItalic.ttf",
-                "weight": 500,
-                "style": "italic"
-              },
-              {
-                "path": "./assets/fonts/Roboto-Bold.ttf",
-                "weight": 700,
-                "style": "normal"
-              },
-              {
-                "path": "./assets/fonts/Roboto-BoldItalic.ttf",
-                "weight": 700,
-                "style": "italic"
-              },
-              {
-                "path": "./assets/fonts/Roboto-ExtraBold.ttf",
-                "weight": 800,
-                "style": "normal"
-              },
-              {
-                "path": "./assets/fonts/Roboto-ExtraBoldItalic.ttf",
-                "weight": 800,
-                "style": "italic"
-              },
-              {
-                "path": "./assets/fonts/Roboto-Black.ttf",
-                "weight": 900,
-                "style": "normal"
-              },
-              {
-                "path": "./assets/fonts/Roboto-BlackItalic.ttf",
-                "weight": 900,
-                "style": "italic"
-              }
-            ]
-          }]
+          "fonts": [
+            {
+              "fontFamily": "Roboto",
+              "fontDefinitions": [
+                {
+                  "path": "./assets/fonts/Roboto-Regular.ttf",
+                  "weight": 400,
+                  "style": "normal"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-Italic.ttf",
+                  "weight": 400,
+                  "style": "italic"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-Medium.ttf",
+                  "weight": 500,
+                  "style": "normal"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-MediumItalic.ttf",
+                  "weight": 500,
+                  "style": "italic"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-Bold.ttf",
+                  "weight": 700,
+                  "style": "normal"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-BoldItalic.ttf",
+                  "weight": 700,
+                  "style": "italic"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-ExtraBold.ttf",
+                  "weight": 800,
+                  "style": "normal"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-ExtraBoldItalic.ttf",
+                  "weight": 800,
+                  "style": "italic"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-Black.ttf",
+                  "weight": 900,
+                  "style": "normal"
+                },
+                {
+                  "path": "./assets/fonts/Roboto-BlackItalic.ttf",
+                  "weight": 900,
+                  "style": "italic"
+                }
+              ]
+            }
+          ]
         }
-      ]
+      ],
+      "@react-native-community/datetimepicker"
     ],
     "experiments": {
       "typedRoutes": true,

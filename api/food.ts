@@ -1,8 +1,21 @@
-import foods from '../assets/json/foods.json';
-import history from '../assets/json/history.json';
+import foods_data from '../assets/json/foods.json';
+import history_data from '../assets/json/history.json';
 
+type Meal = {
+  id: number
+  date: string
+  food: number
+  grams: number
+}
 
 export default class Food {
+  private static foods = Array.isArray(foods_data)
+    ? foods_data.map((food) => new Food().fromJSON(food as Food))
+    : []
+  private static history = Array.isArray(history_data)
+    ? history_data as unknown as Meal[]
+    : [] as Meal[]
+
   public id: number = 0
   public name: string = ''
   public description: string = ''
@@ -19,18 +32,14 @@ export default class Food {
   public date: Date | null = null
 
   public static getFoods() {
-    if(Array.isArray(foods)) {
-      return foods.map((food) => new Food().fromJSON(food as Food))
-    }
-    return []
+    return this.foods
   }
 
   public static getMeals({ start, end }: { start?: Date, end?: Date } = {}) {
-    if(!Array.isArray(history)) return []
     const foods = this.getFoods()
     if(foods.length === 0) return []
 
-    return history.map((meal) => {
+    return this.history.map((meal) => {
       if(start && new Date(meal.date) < start) return undefined
       if(end && new Date(meal.date) > end) return undefined
 
@@ -50,8 +59,8 @@ export default class Food {
 
   public static saveMeal(food: Food, grams: number, date: Date = new Date()): Food {
     const meal = Object.assign({}, food)
-    history.unshift({
-      id: history.length + 1,
+    this.history.unshift({
+      id: this.history.length + 1,
       date: date.toISOString(),
       food: food.id,
       grams: grams
@@ -60,7 +69,7 @@ export default class Food {
   }
 
   public static saveFood(food: Food): Food {
-    foods.push(food)
+    this.foods.push(food)
     return food
   }
 

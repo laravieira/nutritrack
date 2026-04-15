@@ -37,7 +37,7 @@ export default function TabLayout() {
         <TabSlot />
       </View>
       <View style={styles.floatingButton}>
-        <Button onPress={() => router.push('/create-meal-modal')}>LOG FOOD</Button>
+        <Button onPress={() => router.navigate('/modal')}>LOG FOOD</Button>
       </View>
     </Tabs>
   );
