@@ -1,8 +1,8 @@
 import data from '../assets/json/user.json';
 
 export default class User {
-  public static kcal: number = data?.kcal ?? 0
+  public static calories: number = data?.calories ?? 0
   public static protein: number = data?.protein ?? 0
-  public static carbs: number = data?.carbs ?? 0
-  public static fat: number = data?.fat ?? 0
+  public static carbohydrates: number = data?.carbohydrates ?? 0
+  public static fats: number = data?.fats ?? 0
 }

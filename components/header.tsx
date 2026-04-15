@@ -16,14 +16,14 @@ export default function Header() {
   const styles = useStyles(colorScheme)
   const meals = Food.getMeals({ start: startOfDay(new Date()), end: endOfDay(new Date()) })
 
-  const calories = meals.reduce((calories, meal) => calories + meal.calories, 0)
-  const proteins = meals.reduce((proteins, meal) => proteins + meal.protein, 0)
-  const carbohydrates = meals.reduce((carbohydrates, meal) => carbohydrates + meal.carbohydrates, 0)
-  const fats = meals.reduce((fats, meal) => fats + meal.fats, 0)
+  const calories = Math.round(meals.reduce((calories, meal) => calories + meal.calories, 0))
+  const proteins = Math.round(meals.reduce((proteins, meal) => proteins + meal.protein, 0))
+  const carbohydrates = Math.round(meals.reduce((carbohydrates, meal) => carbohydrates + meal.carbohydrates, 0))
+  const fats = Math.round(meals.reduce((fats, meal) => fats + meal.fats, 0))
 
-  const caloriesGoal = User.kcal
+  const caloriesGoal = User.calories
   const caloriesPerGoal = Math.round(calories / caloriesGoal * 100)
-  const fatsPerGoal = Math.round(fats / User.fat * 100)
+  const fatsPerGoal = Math.round(fats / User.fats * 100)
 
   return (
     <View style={styles.container}>
@@ -72,7 +72,7 @@ export default function Header() {
             </View>
             <View style={styles.detailsRow}>
               <ThemedText style={styles.detailsTitle}>Carbs</ThemedText>
-              <ThemedText style={styles.detailsValue}>{carbohydrates}g / {User.carbs}g</ThemedText>
+              <ThemedText style={styles.detailsValue}>{carbohydrates}g / {User.carbohydrates}g</ThemedText>
             </View>
             <View style={styles.detailsRow}>
               <ThemedText style={styles.detailsTitle}>Carbs</ThemedText>
@@ -83,7 +83,7 @@ export default function Header() {
               <LinearProgress progress={fatsPerGoal} color={Colors[colorScheme].tint} />
             </View>
             <View style={[styles.detailsRow, { justifyContent: 'center' }]}>
-              <ThemedText style={styles.detailsValue}>{fats}g / {User.fat}g</ThemedText>
+              <ThemedText style={styles.detailsValue}>{fats}g / {User.fats}g</ThemedText>
             </View>
           </View>
         </View>

@@ -6,10 +6,13 @@ import Header from '@/components/header'
 import { Tabs, TabList, TabSlot, TabTrigger } from 'expo-router/ui'
 import TabButton from '@/components/ui/tab-button'
 import { Colors } from '@/constants/theme'
+import Button from '@/components/ui/buttom'
+import { useRouter } from 'expo-router'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
   const styles = useStyles(colorScheme ?? 'light')
+  const router = useRouter()
 
   return (
     <Tabs style={styles.container}>
@@ -33,6 +36,9 @@ export default function TabLayout() {
       <View style={styles.content}>
         <TabSlot />
       </View>
+      <View style={styles.floatingButton}>
+        <Button onPress={() => router.push('/create-meal-modal')}>LOG FOOD</Button>
+      </View>
     </Tabs>
   );
 }
@@ -51,17 +57,14 @@ const useStyles = (mode: 'dark' | 'light') => StyleSheet.create({
   content: {
     flex: 1
   },
-  fab: {
+  floatingButton: {
     position: 'absolute',
-    right: 20,
-    bottom: 30,
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: Colors[mode].tint,
+    width: '100%',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 5,
-  },
-  fabText: { color: 'white', fontSize: 24 }
+    bottom: 32,
+    left: 0,
+    right: 0,
+  }
 })
